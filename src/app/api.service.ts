@@ -8,6 +8,7 @@ import { Location } from './geolocation.model';
 export class ApiService {
   apiUrl = 'https://gis-visualizer-server.azurewebsites.net/api/GIS';
   constructor(private http: HttpClient) { }
+
   getUsers() {
     return this.http.get<Location[]>(this.apiUrl);
   }

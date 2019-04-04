@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Location } from './geolocation.model';
-import { ApiService } from './api.service';
+
+// import { ApiService } from './api.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 @Component({
@@ -14,11 +14,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class AppComponent implements OnInit {
   title = 'GIS visualizer';
-  geolocation$: Location[];
   dtOptions: DataTables.Settings = {};
 
   constructor(
-    private apiService: ApiService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
     ) {
@@ -34,7 +32,7 @@ export class AppComponent implements OnInit {
       pageLength: 12
     };
 
-    return this.apiService.getUsers()
-    .subscribe(data => this.geolocation$ = data);
   }
+
+
 }
