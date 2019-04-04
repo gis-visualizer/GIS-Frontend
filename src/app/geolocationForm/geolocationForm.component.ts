@@ -14,7 +14,7 @@ export class GeolocationFormComponent implements OnInit {
   title = 'Geolocation Form';
   myForm: FormGroup;
   currentTime: number = Date.now();
-  apiUrl = 'https://localhost:5001/api/GIS';
+  apiUrl = 'https://gis-visualizer-server.azurewebsites.net/api/GIS';
 
   constructor(
     private fb: FormBuilder,
