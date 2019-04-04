@@ -11,6 +11,8 @@ import { ApiService } from './api.service';
 import { DataTablesModule } from 'angular-datatables';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExcelService } from './services/excel.service';
+
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -51,7 +53,7 @@ import { DataTableComponent } from './data-table/data-table.component';
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
