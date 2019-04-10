@@ -11,27 +11,12 @@
     <div class="row justify-content-md-center">
       <div class="col-md-2">
         <mat-form-field>
-          <input matInput placeholder="Category" formControlName="category">
-        </mat-form-field>
-      </div>
-      <div class="col-md-2">
-        <mat-form-field>
           <input matInput placeholder="Longitude" formControlName="longitude">
         </mat-form-field>
       </div>
       <div class="col-md-2">
         <mat-form-field>
           <input matInput placeholder="Latitude" formControlName="latitude">
-        </mat-form-field>
-      </div>
-      <div class="col-md-2">
-        <mat-form-field>
-          <input matInput placeholder="Altitude" formControlName="altitude">
-        </mat-form-field>
-      </div>
-      <div class="col-md-2">
-        <mat-form-field>
-          <input matInput placeholder="Radius" formControlName="radius">
         </mat-form-field>
       </div>
     </div>
@@ -42,9 +27,4 @@
     </div>
 
   </form>
-
-  <div class="row justify-content-md-center">
-      value: {{ myForm.value | json}}
-
-  </div>
 </mat-card>

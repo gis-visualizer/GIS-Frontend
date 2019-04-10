@@ -6,7 +6,7 @@ import { Location } from './geolocation.model';
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl = 'https://gis-visualizer-server.azurewebsites.net/api/GIS';
+  apiUrl = 'https://localhost:5001/api/GIS';
   constructor(private http: HttpClient) { }
 
   getUsers() {

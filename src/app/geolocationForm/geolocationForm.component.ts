@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Location } from '../geolocation.model';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../api.service';
+import { GetgeoComponent } from '../getgeo/getgeo.component';
 
 @Component({
   selector: 'app-geolocation-form',
@@ -14,7 +15,10 @@ export class GeolocationFormComponent implements OnInit {
   title = 'Geolocation Form';
   myForm: FormGroup;
   currentTime: number = Date.now();
-  apiUrl = 'https://gis-visualizer-server.azurewebsites.net/api/GIS';
+  apiUrl = 'https://Localhost:5001/api/GIS';
+
+  currentLat: any;
+  currentLong: any;
 
   constructor(
     private fb: FormBuilder,
@@ -24,18 +28,30 @@ export class GeolocationFormComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      category: '',
       longitude: '',
       latitude: '',
-      altitude: '',
-      radius: '',
       // timestamp: Date.now()
     });
 
-    this.myForm.valueChanges.subscribe(value => console.log(value));
+    this.getgeo()
   }
 
-  onCreatePost() {
+  getgeo() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.currentLat = position.coords.latitude;
+        this.currentLong = position.coords.longitude;
+        console.log(position.coords.latitude)
+        console.log(position.coords.longitude)
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  async onCreatePost() {
+    this.myForm.value.longitude = this.currentLong
+    this.myForm.value.latitude = this.currentLat
     console.log(this.myForm.value);
     this.http.post(this.apiUrl, this.myForm.value, {
       headers: {
