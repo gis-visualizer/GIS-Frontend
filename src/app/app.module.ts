@@ -27,12 +27,14 @@ import {
 import { GeolocationFormComponent } from './geolocationForm/geolocationForm.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DataTableComponent } from './data-table/data-table.component';
+import { GetgeoComponent } from './getgeo/getgeo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GeolocationFormComponent,
-    DataTableComponent
+    DataTableComponent,
+    GetgeoComponent
   ],
   imports: [
     BrowserModule,
