@@ -16,7 +16,11 @@ export class CookieComponent implements OnInit {
   saveCookie(name: string) {
     this.name = name;
     this.cookieService.set( 'name', this.name ); 
+    console.log(this.name)
+  }
 
+  returnCookie(){
+    return this.name
   }
 
 }

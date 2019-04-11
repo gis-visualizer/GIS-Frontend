@@ -22,7 +22,7 @@ export class GetgeoComponent implements OnInit {
         this.currentLong = position.coords.longitude;
         console.log(position.coords.latitude)
         console.log(position.coords.longitude)
-        return [this.currentLat, this.currentLong]
+        return [position.coords.latitude, position.coords.longitude]
       });
     } else {
       alert("Geolocation is not supported by this browser.");

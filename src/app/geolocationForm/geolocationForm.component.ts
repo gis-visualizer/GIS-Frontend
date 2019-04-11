@@ -5,7 +5,7 @@ import { Location } from "../geolocation.model";
 import { map } from "rxjs/operators";
 import { ApiService } from "../api.service";
 import { GetgeoComponent } from "../getgeo/getgeo.component";
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: "app-geolocation-form",
   templateUrl: "./geolocationForm.component.html",
@@ -27,16 +27,20 @@ export class GeolocationFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private cookieService: CookieService,
   ) {}
 
   ngOnInit() {
+    
     this.myForm = this.fb.group({
       longitude: "",
-      latitude: ""
+      latitude: "",
+      name:""
     });
     this.myFormCalc = this.fb.group({
       clongitude: "",
+      name: "",
       clatitude: "",
       llongitude: "",
       llatitude: "",
@@ -50,6 +54,7 @@ export class GeolocationFormComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.currentLat = position.coords.latitude;
         this.currentLong = position.coords.longitude;
+        
         // console.log(position.coords.latitude);
         // console.log(position.coords.longitude);
       });
@@ -84,6 +89,7 @@ export class GeolocationFormComponent implements OnInit {
   async onCreatePost() {
     this.myForm.value.longitude = this.currentLong
     this.myForm.value.latitude = this.currentLat
+    this.myForm.value.name = this.cookieService.get('name')
     await this.http.post(this.apiUrl, this.myForm.value, {
       headers: {
         'Content-Type': 'application/json'
@@ -94,13 +100,15 @@ export class GeolocationFormComponent implements OnInit {
   async onDistancePost() {   
     this.list = []
     await this.locationCoords().then(arr => arr.forEach((arr) => this.list.push([arr.latitude,arr.longitude])))
-    for (var i = 0; i <= this.list.length; i++) {
+    var lastLocation = this.list.pop()
+    // for (var i = 0; i <= this.list.length; i++) {
+      this.myFormCalc.value.name = this.cookieService.get('name');
       this.myFormCalc.value.clongitude = this.currentLong;
       this.myFormCalc.value.clatitude = this.currentLat;
-      this.myFormCalc.value.llatitude = this.list[i][0];
-      this.myFormCalc.value.llongitude = this.list[i][1];
+      this.myFormCalc.value.llatitude = lastLocation[0];
+      this.myFormCalc.value.llongitude = lastLocation[1];
       this.myFormCalc.value.distancebetween = this.haversine(
-        [this.currentLat, this.currentLong],this.list[i]
+        [this.currentLat, this.currentLong],lastLocation
       );
       this.http
         .post(this.apiUrlCalc, this.myFormCalc.value, {
@@ -110,5 +118,5 @@ export class GeolocationFormComponent implements OnInit {
         })
         .subscribe(res => console.log(res));
     }
-  }
+  // }
 }
