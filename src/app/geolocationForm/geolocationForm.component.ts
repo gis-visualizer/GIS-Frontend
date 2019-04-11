@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Location } from "../geolocation.model";
 import { map } from "rxjs/operators";
 import { ApiService } from "../api.service";
+import { CookieComponent} from "../cookie/cookie.component";
 
 @Component({
   selector: "app-geolocation-form",
@@ -30,6 +31,7 @@ export class GeolocationFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    
     this.myForm = this.fb.group({
       longitude: "",
       latitude: ""
