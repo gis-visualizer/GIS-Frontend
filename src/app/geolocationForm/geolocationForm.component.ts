@@ -93,13 +93,14 @@ export class GeolocationFormComponent implements OnInit {
   async onDistancePost() {   
     this.list = []
     await this.locationCoords().then(arr => arr.forEach((arr) => this.list.push([arr.latitude,arr.longitude])))
-    for (var i = 0; i <= this.list.length; i++) {
+    var i = this.list.pop()
+    // for (var i = 0; i <= this.list.length; i++) {
       this.myFormCalc.value.clongitude = this.currentLong;
       this.myFormCalc.value.clatitude = this.currentLat;
-      this.myFormCalc.value.llatitude = this.list[i][0];
-      this.myFormCalc.value.llongitude = this.list[i][1];
+      this.myFormCalc.value.llatitude = i[0];
+      this.myFormCalc.value.llongitude = i[1];
       this.myFormCalc.value.distancebetween = this.haversine(
-        [this.currentLat, this.currentLong],this.list[i]
+        [this.currentLat, this.currentLong],i
       );
       this.http
         .post(this.apiUrlCalc, this.myFormCalc.value, {
@@ -109,5 +110,5 @@ export class GeolocationFormComponent implements OnInit {
         })
         .subscribe(res => console.log(res));
     }
-  }
+  // }
 }
