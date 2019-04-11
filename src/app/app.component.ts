@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
   title = 'GIS visualizer';
   dtOptions: DataTables.Settings = {};
 
@@ -27,19 +27,17 @@ export class AppComponent implements OnInit {
     private domSanitizer: DomSanitizer,
     private geo: GetgeoComponent,
     
-
   ) {
+    this.geo.getgeo()
+    
     this.matIconRegistry.addSvgIcon(
       `map`,
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/map.svg')
     );
   }
 
-  ngOnInit() {
-
-
-    console.log(this.geo.getgeo())
-    const map = L.map('map').setView([43, 10], 13);
+  ngAfterViewInit() {
+    const map = L.map('map').setView([this.geo.currentLat, this.geo.currentLong], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
