@@ -4,7 +4,6 @@ import { HttpClient } from "@angular/common/http";
 import { Location } from "../geolocation.model";
 import { map } from "rxjs/operators";
 import { ApiService } from "../api.service";
-import { GetgeoComponent } from "../getgeo/getgeo.component";
 
 @Component({
   selector: "app-geolocation-form",
