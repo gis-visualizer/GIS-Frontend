@@ -39,6 +39,7 @@ import { CookieComponent } from './cookie/cookie.component';
     DataTableComponent,
     GetgeoComponent,
     CookieComponent,
+
   ],
   imports: [
     BrowserModule,

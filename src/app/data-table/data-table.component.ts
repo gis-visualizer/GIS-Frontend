@@ -17,7 +17,7 @@ export class DataTableComponent implements OnInit {
   geoData: Location[];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'category', 'longitude', 'latitude', 'altitude', 'radius'];
+  displayedColumns = ['id', 'name', 'longitude', 'latitude'];
 
   constructor(private apiService: ApiService, public excelService: ExcelService) {}
 
