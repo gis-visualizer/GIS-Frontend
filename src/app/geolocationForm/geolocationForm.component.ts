@@ -94,14 +94,14 @@ export class GeolocationFormComponent implements OnInit {
   async onDistancePost() {   
     this.list = []
     await this.locationCoords().then(arr => arr.forEach((arr) => this.list.push([arr.latitude,arr.longitude])))
-    var i = this.list.pop()
+    var lastLocation = this.list.pop()
     // for (var i = 0; i <= this.list.length; i++) {
       this.myFormCalc.value.clongitude = this.currentLong;
       this.myFormCalc.value.clatitude = this.currentLat;
-      this.myFormCalc.value.llatitude = i[0];
-      this.myFormCalc.value.llongitude = i[1];
+      this.myFormCalc.value.llatitude = lastLocation[0];
+      this.myFormCalc.value.llongitude = lastLocation[1];
       this.myFormCalc.value.distancebetween = this.haversine(
-        [this.currentLat, this.currentLong],i
+        [this.currentLat, this.currentLong],lastLocation
       );
       this.http
         .post(this.apiUrlCalc, this.myFormCalc.value, {
