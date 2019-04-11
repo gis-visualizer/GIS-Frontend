@@ -39,8 +39,10 @@ export class AppComponent implements AfterViewInit {
     );
   }
 
+
   ngAfterViewInit() {
     const map = L.map('map').setView([this.geo.currentLat, this.geo.currentLong], 13);
+
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
