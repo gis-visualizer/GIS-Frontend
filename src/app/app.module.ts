@@ -34,7 +34,7 @@ import { GetgeoComponent } from './getgeo/getgeo.component';
     AppComponent,
     GeolocationFormComponent,
     DataTableComponent,
-    GetgeoComponent
+    GetgeoComponent,
   ],
   imports: [
     BrowserModule,
