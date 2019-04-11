@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 })
 export class CookieComponent implements OnInit {
-  name = '';
+  name = this.cookieService.get('name');
   constructor(private cookieService: CookieService,) { }
 
   ngOnInit() {
@@ -16,7 +16,7 @@ export class CookieComponent implements OnInit {
   saveCookie(name: string) {
     this.name = name;
     this.cookieService.set( 'name', this.name ); 
-    //var cookieValue = this.cookieService.get('name');
+
   }
 
 }

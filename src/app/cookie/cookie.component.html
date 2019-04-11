@@ -1,6 +1,6 @@
-
-    <div class="col-md-2">
-      <mat-form-field>
-        <input  matInput id="nameInput" placeholder="name" (keyup.enter)="saveCookie(nameInput.value)">
-      </mat-form-field>
-    </div>
+{{name}}
+<div class="col-md-2">
+  <mat-form-field>
+    <input matInput #nameInput placeholder="name" (keyup.enter)="saveCookie(nameInput.value)">
+  </mat-form-field>
+</div>
