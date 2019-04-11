@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 
 
     console.log(this.geo.getgeo())
-    const map = L.map('map').setView([43, 10], 13);
+    const map = L.map('map').setView([49.3, -123.1], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
