@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { GetgeoComponent } from "./getgeo/getgeo.component";
 
+
+declare let L;
 // import { ApiService } from './api.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -10,16 +13,22 @@ import { DomSanitizer } from '@angular/platform-browser';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [GetgeoComponent],
+  
 })
 
 export class AppComponent implements OnInit {
   title = 'GIS visualizer';
   dtOptions: DataTables.Settings = {};
 
+
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-    ) {
+    private domSanitizer: DomSanitizer,
+    private geo: GetgeoComponent,
+    
+
+  ) {
     this.matIconRegistry.addSvgIcon(
       `map`,
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/map.svg')
@@ -27,6 +36,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+
+    console.log(this.geo.getgeo())
+    const map = L.map('map').setView([43, 10], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 12

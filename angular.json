@@ -25,11 +25,14 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/leaflet.css"
+
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js"
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "src/assets/leaflet.js"
             ],
             "es5BrowserSupport": true
           },
@@ -85,9 +88,13 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/leaflet.css"
+
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/leaflet.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

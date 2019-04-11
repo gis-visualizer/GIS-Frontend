@@ -28,13 +28,17 @@ import { GeolocationFormComponent } from './geolocationForm/geolocationForm.comp
 import { MatIconModule } from '@angular/material/icon';
 import { DataTableComponent } from './data-table/data-table.component';
 import { GetgeoComponent } from './getgeo/getgeo.component';
+import { CookieService } from 'ngx-cookie-service';
+import { CookieComponent } from './cookie/cookie.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     GeolocationFormComponent,
     DataTableComponent,
-    GetgeoComponent
+    GetgeoComponent,
+    CookieComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,7 @@ import { GetgeoComponent } from './getgeo/getgeo.component';
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [ApiService, ExcelService],
+  providers: [ApiService, ExcelService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

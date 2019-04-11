@@ -1,7 +1,9 @@
 <h1 class="header">{{title}}</h1>
 <br />
 <br />
-
+{{name}}
+<app-cookie></app-cookie>
+<div id="map"></div>
 <div class="container main-form">
   <app-geolocation-form></app-geolocation-form>
   <app-getgeo></app-getgeo>
@@ -9,6 +11,6 @@
 
 <br />
 <br />
-  <app-data-table></app-data-table>
+<app-data-table></app-data-table>
 
 <router-outlet></router-outlet>

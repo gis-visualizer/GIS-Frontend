@@ -15,17 +15,19 @@ export class GetgeoComponent implements OnInit {
   ngOnInit() {
   }
 
-  getgeo() {
+  public getgeo() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.currentLat = position.coords.latitude;
         this.currentLong = position.coords.longitude;
         console.log(position.coords.latitude)
         console.log(position.coords.longitude)
+        return [this.currentLat, this.currentLong]
       });
     } else {
       alert("Geolocation is not supported by this browser.");
     }
+    
   }
 
 }
